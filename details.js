@@ -31,8 +31,8 @@ window.onload = () => {
       }
     })
     .then((product) => {
-        const footer = document.querySelector("footer");
-        footer.classList.remove("d-none");
+      const footer = document.querySelector("footer");
+      footer.classList.remove("d-none");
 
       const container = document.getElementById("detailsRow");
 
@@ -100,12 +100,11 @@ window.onload = () => {
          
             `;
 
-            const main = document.querySelector("main");
-            const footer = document.querySelector("footer");
+      const main = document.querySelector("main");
+      const footer = document.querySelector("footer");
 
-
-            main.remove()
-            footer.remove()
+      main.remove();
+      footer.remove();
     })
     .finally(() => {
       isLoading(false);

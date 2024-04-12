@@ -139,7 +139,6 @@ window.onload = () => {
           alert.innerHTML = `The product <strong>${deletedProduct.name}</strong> has been deleted successfully`;
 
           alertContainer.appendChild(alert);
-          
 
           setTimeout(() => {
             alert.remove();

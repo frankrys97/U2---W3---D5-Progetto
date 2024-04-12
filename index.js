@@ -69,6 +69,7 @@ window.onload = () => {
               Scopri di più!
             </button>
             <button
+            data-bs-toggle="modal" data-bs-target="#accessModified"
               type="button"
               class="btn btn-sm btn-outline-secondary d-flex align-items-center gap-2 py-0 px-2 modifiedButton"
             >
@@ -82,6 +83,21 @@ window.onload = () => {
         col.appendChild(card);
         row.appendChild(col);
 
+        const passwordInputModal = document.querySelector(
+          ".passwordInputModal"
+        );
+
+        const accessButton = document.querySelector(".accessButton");
+
+        accessButton.addEventListener("click", () => {
+          if (passwordInputModal.value === "12345") {
+            const id = productData._id;
+            window.location.href = `./backoffice.html?id=${id}`;
+          } else {
+            alert("Password errata");
+          }
+        });
+
         const discoverButton = col.querySelector(".discoverButton");
         const goToDetails = () => {
           const id = productData._id;
@@ -90,13 +106,13 @@ window.onload = () => {
 
         discoverButton.addEventListener("click", goToDetails);
 
-        const goToBackoffice = () => {
-          const id = productData._id;
-          window.location.href = `backoffice.html?id=${id}`;
-        };
+        // const goToBackoffice = () => {
+        //   const id = productData._id;
+        //   window.location.href = `backoffice.html?id=${id}`;
+        // };
 
-        const modifiedButton = col.querySelector(".modifiedButton");
-        modifiedButton.addEventListener("click", goToBackoffice);
+        // const modifiedButton = col.querySelector(".modifiedButton");
+        // modifiedButton.addEventListener("click", goToBackoffice);
       });
     })
     .catch((error) => {
@@ -108,12 +124,31 @@ window.onload = () => {
     </div>
        
           `;
-          const main = document.querySelector("main");
-          main.remove()
-          const footer = document.querySelector("footer");
-          footer.remove()
+      const main = document.querySelector("main");
+      main.remove();
+      const footer = document.querySelector("footer");
+      footer.remove();
     })
     .finally(() => {
       isLoading(false);
     });
 };
+
+const myPassword = "12345";
+document.getElementById("backofficeLink").style.display = "none";
+
+const checkPassword = () => {
+  let password = document.getElementById("passwordInput").value;
+
+  if (password === myPassword) {
+    document.getElementById("backofficeLink").style.display = "block";
+    document.getElementById("passwordInput").style.display = "none";
+    document.getElementById("passwordButton").style.display = "none";
+  } else {
+    alert("Password errata. Riprova.");
+  }
+};
+
+document
+  .getElementById("passwordButton")
+  .addEventListener("click", checkPassword);
