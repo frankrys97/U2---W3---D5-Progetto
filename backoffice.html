@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <title>EPICODE - Pexels API</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./Assets/backoffice.css" />
+  </head>
+  <body>
+    <header>
+      <div class="collapse bg-dark" id="navbarToggleExternalContent">
+        <div class="container">
+          <div class="row flex-column">
+            <div class="col-sm-8 col-md-7 py-4 text-white">
+              <h4>About</h4>
+              <p class="text-gray">
+                Welcome to Crudazon, your ultimate destination for cutting-edge
+                technology products! At Crudazon, we strive to bring you the
+                latest and greatest in tech gadgets, from smartphones and
+                laptops to smart home devices and wearable tech. With a wide
+                selection of top brands and innovative products, we cater to
+                tech enthusiasts of all levels. Whether you're looking to
+                upgrade your devices, explore new tech trends, or find the
+                perfect gift for the tech lover in your life, Crudazon has you
+                covered. Shop with confidence and convenience, and unlock the
+                possibilities of tomorrow with Crudazon today!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container">
+          <a class="navbar-brand" href="./index.html">
+            <img
+              src="./Assets/Schermata_2024-04-12_alle_10.01.09-removebg-preview.png"
+              alt="logo"
+              style="width: 180px"
+            />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="./index.html"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active me-auto" href="./backoffice.html"
+                  >Backoffice</a
+                >
+              </li>
+            </ul>
+            <a
+              class="nav-link"
+              data-bs-target="#navbarToggleExternalContent"
+              data-bs-toggle="collapse"
+              href="#"
+              >About Us</a
+            >
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main role="main">
+      <section class="jumbotron my-5">
+        <div class="container">
+          <form id="form">
+            <div class="d-flex flex-column flex-sm-row justify-content-start align-items-center gap-3">
+              <h1 class="jumbotron-heading m-o">
+                Backoffice <span id="subtitle" class="text-muted fs-3"></span>
+              </h1>
+              <button
+                class="btn btn-warning ms-sm-auto"
+                type="reset"
+                id="resetButton"
+              >
+                Reset Form
+              </button>
+            </div>
+            <div class="mb-3">
+              <label for="name" class="form-label fw-semibold"
+                >Product Name</label
+              >
+              <input
+                autocomplete="on"
+                type="text"
+                id="name"
+                class="form-control"
+                placeholder="Enter the product name"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="description" class="form-label fw-semibold"
+                >Description</label
+              >
+              <textarea
+                type="text"
+                id="description"
+                class="form-control"
+                placeholder="Enter the description"
+                rows="4"
+                required
+              ></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="brand" class="form-label fw-semibold">Brand</label>
+              <input
+                autocomplete="on"
+                type="text"
+                id="brand"
+                class="form-control"
+                placeholder="Enter the brand"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="urlImage" class="form-label fw-semibold"
+                >Url Image</label
+              >
+              <input
+                autocomplete="on"
+                type="text"
+                id="image"
+                class="form-control"
+                placeholder="Enter the Url of the image"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="price" class="form-label fw-semibold">Price</label>
+              <input
+                step="0.01"
+                autocomplete="on"
+                type="number"
+                id="price"
+                class="form-control"
+                placeholder="0"
+                min="0"
+                required
+              />
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <button type="submit" id="formSubmit" class="btn btn-primary">
+                Add product
+              </button>
+              <button
+                type="button"
+                id="deleteIcon"
+                class="btn btn-danger d-none"
+                data-bs-toggle="modal"
+                data-bs-target="#deleteModal"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-trash3"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"
+                  />
+                </svg>
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <div
+        class="modal fade"
+        id="deleteModal"
+        tabindex="-1"
+        aria-labelledby="deleteModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="deleteModalLabel">
+                Modal title
+              </h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">...</div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="button" class="btn btn-danger" id="deleteButton">
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <div id="alertContainer"></div>
+    <footer class="container-fluid mt-4 text-center text-white p-4 bg-dark">
+        <button
+        type="button"
+        class="btn btn-outline-light text-white mb-5"
+        data-bs-toggle="modal"
+        data-bs-target="#ContattaciModal"
+      >
+        Contattaci
+      </button>
+      <p>© 2024 Crudazon Tech LTD. All Rights Reserved.</p>
+    </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./backoffice.js"></script>
+  </body>
+</html>
